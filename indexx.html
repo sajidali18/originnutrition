@@ -1,0 +1,564 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<style>
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #fffaf4;
+        }
+        .navbar-custom {
+            background-color: #fdf0e0;
+        }
+        .nav-link{
+            color: #612d0f;
+            font-weight: bold;
+            margin: 10px;
+        }
+        .product-section {
+            padding: 50px 0;
+            background-color: #fff5ec;
+        }
+        .features-section {
+            background-color: #e8f5e9;
+            padding: 50px 0;
+        }
+        .news-section {
+            background-color: #e8f5e9;
+            padding: 50px 0;
+        }
+        .accordion-item {
+            background-color: #f9f9f9;
+            border: none;
+            color: #612d0f;
+        }
+        .accordion-button {
+            color: #612d0f;
+            background-color: #fffaf4;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        .accordion-button:focus {
+            box-shadow: none;
+        }
+        .footer {
+            background-color: #fdf0e0;
+            padding: 30px 0;
+            text-align: center;
+        }
+        #InputProductSearch{
+            border-radius: 10px;
+            border: 1px solid#612d0f;
+            padding: 2px 3px;
+            margin-top: 20px;
+            margin-left: 5px;
+        }
+         .carousel-item img {
+            max-height: 400px;
+            object-fit: contain;
+        }
+
+        .carousel-item {
+            text-align: center;
+        }
+
+        .product-info {
+            margin-top: 10px;
+        }
+
+        .product-info h5 {
+            font-size: 1.25rem;
+            margin-bottom: 5px;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .product-info .price {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 10%;
+           
+        }
+
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #612d0f;
+            border-radius: 50%;
+        }
+
+        .carousel-indicators button {
+            background-color: #007bff;
+        }
+
+    .dropdown-toggle {
+        border: 1px solid #e6d9bf;
+        background-color: #f9e8c6;
+        color: #463618;
+        width: 100%;
+        text-align: left;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .dropdown-toggle:focus {
+        box-shadow: none;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .dropdown-item {
+        color: #463618;
+    }
+
+    .btn-custom {
+        width: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        font-weight: 700;
+        margin-bottom: 10px;
+    }
+
+    .btn-add-to-cart {
+        background-color: #ffdd91;
+        color: #463618;
+        border: none;
+        box-shadow: 5px 5px 0 #b08968;
+    }
+
+    .btn-buy-now {
+        background-color: #c1f0b0;
+        color: #463618;
+        border: none;
+        box-shadow: 5px 5px 0 #b08968;
+    }
+
+    .price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #463618;
+        margin-bottom: 5px;
+    }
+
+    .discounted-price {
+        color: #ab6959;
+        text-decoration: line-through;
+        margin-right: 5px;
+    }
+
+    .discount {
+        font-size: 0.8rem;
+        color: #ab6959;
+    }
+
+    .points {
+        font-size: 0.8rem;
+        color: #ab6959;
+    }
+
+    .icons {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #7a5530;
+    }
+
+    .icons img {
+        width: 30px;
+        margin-bottom: 5px;
+    }
+
+    .icon-text {
+        display: inline-block;
+        text-align: center;
+        margin: 10px;
+    }
+    .lgo{
+        font-weight: bold;
+        color: #612d0f;
+    }
+    .oimg img{
+        max-width: 400px;
+    }
+    .box-1{
+        border: 2px solid #cde6b0;
+        border-radius: 15px;
+        margin: 0px 20px;
+    }
+    .box-1 p{
+        padding: 55px 0px;
+        margin: 0px 30px;
+    }
+    .zoom-effect {
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .zoom-effect img {
+            transition: transform 0.3s ease-in-out;
+            width: 100%;
+            height: auto;
+        }
+
+        .zoom-effect:hover img {
+            transform: scale(3.0);
+        }
+
+        .banner img{
+            transition: box-shadow 0.5s;
+        }
+
+        .banner:hover.banner img{
+        border-radius: 8px;
+        box-shadow: 6px 6px 0 #fc943e;
+        }
+
+
+</style>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light navbar-custom">
+    <div class="container">
+        <img src="https://originnutrition.in/wp-content/themes/origin/images/brand/origin-logo-combined.svg" alt="">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reviews</a>
+                </li>
+                <li class="nav-item">
+                <input type="text" class="nav-link" placeholder="Search products" id="InputProductSearch">
+                </li>
+                <li class="nav-item">
+                  <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/themes/origin/images/assets/icon-person-brown.svg?v=2" alt="" class="nav-link">
+                </li>
+                <li class="nav-item">
+                    <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/themes/origin/images/assets/icon-cart-brown.svg?v=2" alt="" class="nav-link">
+                </li>
+            </ul>
+            <div class="d-flex align-items-center ms-lg-3">
+                <a href="#" class="me-3"><i class="bi bi-person"></i></a>
+                <a href="#" class="me-3"><i class="bi bi-cart"></i></a>
+                <a href="#"><i class="bi bi-search"></i></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container text-center">
+    <div class="row mt-5">
+        <div class="col nav-link">
+            <h3 class="fw-bold">Daily Plant Protein – Multi flavour Pack</h3>
+            <p>
+            <ul>
+            <li>25 gms of protein per serving</li> 
+            <li> Made from clean plant sources: Blend of Canadian Golden Peas and Organic cold-pressed pumpkin</li>
+            <li> A complete protein source with all 9 essential amino</li>
+            <li> 100% free from allergens and easy to digest</li>
+            <li>  Includes digestive enzymes for enhanced gut health</li>
+            <li>   4.5gms of naturally-occurring BCAAs/serving</li>
+            </ul></p>
+        </div>
+        <div class="col">
+        <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+           
+        
+            <!-- Carousel Items -->
+            <div class="carousel-inner">
+                <!-- First Product -->
+                <div class="carousel-item active zoom-effect">
+                    <img src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_webp/originnutrition.in/wp-content/uploads/2021/11/MF-Pack-mockup-Front-1--400x400.png" class="img-fluid"> 
+                </div>
+        
+                <!-- Second Product -->
+                <div class="carousel-item zoom-effect">
+                    <img src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_webp/originnutrition.in/wp-content/uploads/2023/12/Origin-Newspaper-Banner-Listing-1.jpg" class="d-block w-100 img-fluid" alt="Product 2">
+                </div>
+        
+                <!-- Third Product -->
+                <div class="carousel-item zoom-effect">
+                    <img src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_webp/originnutrition.in/wp-content/uploads/2021/11/Untitled-presentation.png" class="d-block w-100 img-fluid" alt="Product 3">
+                </div>
+            </div>
+        
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        </div>
+        <div class="col">
+        <div class="container text-center">
+            <!-- Quantity Dropdown -->
+            <div class="dropdown mb-4">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Quantity <span class="ms-3">1</span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">1</a></li>
+                    <li><a class="dropdown-item" href="#">2</a></li>
+                    <li><a class="dropdown-item" href="#">3</a></li>
+                    <li><a class="dropdown-item" href="#">4</a></li>
+                    <li><a class="dropdown-item" href="#">5</a></li>
+                </ul>
+            </div>
+        
+            <!-- Price Display -->
+            <div class="price">
+                <span class="discounted-price">₹570</span>
+                <span>₹570</span>
+                <span class="discount">(0% Off)</span>
+            </div>
+            <div class="points">Earn 29 Health Points</div>
+        
+            <!-- Buttons -->
+            <button class="btn btn-custom btn-add-to-cart">Add to cart</button>
+            <button class="btn btn-custom btn-buy-now">Buy Now</button>
+        
+            <!-- Icons Section -->
+            <div class="icons">
+                <div class="icon-text">
+                    <img src="https://img.icons8.com/color/48/000000/checkmark--v1.png" alt="Authentic Product">
+                    <div>Authentic Product</div>
+                </div>
+                <div class="icon-text">
+                    <img src="https://img.icons8.com/color/48/000000/security-checked.png" alt="Tested & Certified">
+                    <div>Tested & Certified</div>
+                </div>
+                <div class="icon-text">
+                    <img src="https://img.icons8.com/color/48/000000/natural-food.png" alt="100% Natural & Clean">
+                    <div>100% Natural & Clean</div>
+                </div>
+            </div>
+        </div>
+
+        </div>
+    </div>
+</div>
+<div class="news-section text-center">
+    <div class="container text-center">
+        <div class="row lgo">
+            <div class="col">
+              <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/100-natural-1.svg" alt="">
+              <p>100% Natural</p>
+            </div>
+            <div class="col">
+                <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/sugar-free.svg"
+                    alt="">
+                <p>No Added Sugar</p>
+            </div>
+            <div class="col">
+            <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/dairy-nut-free.svg"
+                alt="">
+            <p>Dairy & Nut Free</p>
+            </div>
+            <div class="col">
+                <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/soy-gluten-free.svg"
+                    alt="">
+                <p>Soy & Gluten Free</p>
+            </div>
+            <div class="col">
+                <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/non-gmo.svg"
+                    alt="">
+                <p>Non GMO</p>
+            </div>
+            <div class="col">
+            <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/cruelty-free.svg"
+                alt="">
+            <p >Animal Friendly</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="container banner col-md-10">
+            <img src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_webp/originnutrition.in/wp-content/uploads/2024/04/Newspaper-PD-Banner-1.png" alt="News" class="img-fluid">
+        </div>
+    </div>
+    <div class="container my-5">
+        <div class="accordion" id="accordionExample">
+            <!-- Why Origin -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        Why Origin?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col-md-6">
+                            <div class="wp-block-column is-layout-flow wp-block-column-is-layout-flow">
+                                <h2 class="gb-66b08d9cec07b wp-block-heading mb-30 mt-0" id="h-what-makes-origin-vegan-protein-perfect"
+                                    style="font-size:28px">What makes Origin <br>Vegan Protein Perfect?</h2>                       
+                                <ul class="fancy-bullets-circle-check ">
+                                    <li>Made from 100% natural ingredients only</li>                       
+                                    <li>Delicious taste &amp; healthy</li>
+                            
+                            
+                            
+                                    <li>Added digestive enzymes for improved gut health</li>
+                            
+                            
+                            
+                                    <li>Allergen free and has no side effects</li>
+                            
+                            
+                            
+                                    <li>No nasties &amp; free of preservatives</li>
+                            
+                            
+                            
+                                    <li>Highest quality European proteins with guaranteed traceability from crop to consumer</li>
+                            
+                            
+                            
+                                    <li>Certified by Informed Choice UK</li>
+                                </ul>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="oimg">
+                                <img src="https://cdn.shortpixel.ai/spai/q_lossy+ret_img+to_webp/originnutrition.in/wp-content/uploads/2022/08/final_A-slides-06-1024x1024.jpg" alt="">
+                            </div>
+                            </div>
+                            <div class="col-md-12 d-flex m-2">
+                              <div class="col-md-3">
+                                <div class="box-1">
+                                <div class="box">
+                                    <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/muscle.svg" alt="">
+                                </div>
+                                <p>Helps build muscle & aids in post workout / injury recovery</p>
+                                </div>
+                              </div>
+                              <div class="col-md-3 ">
+                                <div class="box-1">
+                                <div class="box">
+                                    <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/weight.svg" alt="">
+                                </div>
+                                <p>Helps build muscle & aids in post workout / injury recovery</p>
+                                </div>
+                              </div>
+                              <div class="col-md-3 ">
+                                <div class="box-1">
+                                <div class="box">
+                                    <img src="https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/gut.svg" alt="">
+                                </div>
+                                <p>Helps build muscle & aids in post workout / injury recovery</p>
+                                </div>
+                              </div>
+                              <div class="col-md-3 ">
+                                <div class="box-1">
+                                <div class="box">
+                                    <img src="	https://cdn.shortpixel.ai/spai/ret_img/originnutrition.in/wp-content/uploads/2021/10/heart.svg" alt="">
+                                </div>
+                                <p>Helps build muscle & aids in post workout / injury recovery</p>
+                                </div>
+                              </div>
+                              
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Vegan vs Whey -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Vegan vs Whey
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Our vegan protein offers a cruelty-free alternative to whey protein, with comparable protein
+                            content and essential amino acids. Choose vegan for a sustainable and ethical choice.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Ingredients -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Ingredients
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <p>Our ingredients are carefully selected to provide the best nutritional benefits. We use premium
+                            European golden peas, organic cold-pressed pumpkin seeds, and more to create our unique protein
+                            blends.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2024 Origin Nutrition. All Rights Reserved.</p>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.2.3/js/bootstrap.min.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+
+
